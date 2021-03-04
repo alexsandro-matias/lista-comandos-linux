@@ -220,4 +220,3 @@ SEE ALSO
        Full documentation <https://www.gnu.org/software/coreutils/ls>
        or available locally via: info '(coreutils) ls invocation'
 
-GNU coreutils 8.32                                                                                            March 2020                                                                                                         LS(1)
