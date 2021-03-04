@@ -10,9 +10,6 @@
 ## ls
 Lista arquivos num determinado diretório.
 
-
-<a id="cd"></a>
-## ls
 NAME
        ls - list directory contents
 
@@ -198,25 +195,41 @@ DESCRIPTION
        Using color to distinguish file types is disabled both by default and with --color=never.  With --color=auto, ls emits color codes only when standard output is connected to a terminal.  The  LS_COLORS  environment  variable
        can change the settings.  Use the dircolors command to set it.
 
-   Exit status:
-       0      if OK,
 
-       1      if minor problems (e.g., cannot access subdirectory),
 
-       2      if serious trouble (e.g., cannot access command-line argument).
-
-AUTHOR
-       Written by Richard M. Stallman and David MacKenzie.
-
-REPORTING BUGS
-       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
-       Report any translation bugs to <https://translationproject.org/team/>
-
-COPYRIGHT
-       Copyright © 2020 Free Software Foundation, Inc.  License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
-       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
-
-SEE ALSO
-       Full documentation <https://www.gnu.org/software/coreutils/ls>
-       or available locally via: info '(coreutils) ls invocation'
-
+<a id="cd"></a>
+## cd
+cd: cd [-L|[-P [-e]] [-@]] [dir]
+    Change the shell working directory.
+    
+    Change the current directory to DIR.  The default DIR is the value of the
+    HOME shell variable.
+    
+    The variable CDPATH defines the search path for the directory containing
+    DIR.  Alternative directory names in CDPATH are separated by a colon (:).
+    A null directory name is the same as the current directory.  If DIR begins
+    with a slash (/), then CDPATH is not used.
+    
+    If the directory is not found, and the shell option `cdable_vars' is set,
+    the word is assumed to be  a variable name.  If that variable has a value,
+    its value is used for DIR.
+    
+    Options:
+      -L	force symbolic links to be followed: resolve symbolic
+    		links in DIR after processing instances of `..'
+      -P	use the physical directory structure without following
+    		symbolic links: resolve symbolic links in DIR before
+    		processing instances of `..'
+      -e	if the -P option is supplied, and the current working
+    		directory cannot be determined successfully, exit with
+    		a non-zero status
+      -@	on systems that support it, present a file with extended
+    		attributes as a directory containing the file attributes
+    
+    The default is to follow symbolic links, as if `-L' were specified.
+    `..' is processed by removing the immediately previous pathname component
+    back to a slash or the beginning of DIR.
+    
+    Exit Status:
+    Returns 0 if the directory is changed, and if $PWD is set successfully when
+    -P is used; non-zero otherwise.
